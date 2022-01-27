@@ -6,5 +6,8 @@
 
     <bean id="pig" class="ru.itsjava.Piglet"/>
 
+    <bean id="farmer" class="ru.itsjava.KindFarmer">
+        <constructor-arg ref="pig"/>
+    </bean>
 
 </beans>
