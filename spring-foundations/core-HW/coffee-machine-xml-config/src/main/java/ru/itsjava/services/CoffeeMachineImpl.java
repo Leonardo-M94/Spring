@@ -44,11 +44,8 @@ public class CoffeeMachineImpl implements CoffeeMachine {
                 break;
 
             } catch (InvalidCoffeeIndexException exception) {
-
                 System.out.println("Error: " + exception.getMessage());
-
             } catch (InsufficientFundsException exception) {
-
                 System.out.println("Error: " + exception.getMessage());
                 enoughMoney = false;
             }
