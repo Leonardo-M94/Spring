@@ -13,6 +13,7 @@
         <module>programmer-app-xml-config</module>
         <module>core-HW</module>
         <module>core-java-based</module>
+        <module>programmer-app-java-based-config</module>
     </modules>
 
     <properties>
