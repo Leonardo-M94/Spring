@@ -14,6 +14,7 @@
         <module>core-HW</module>
         <module>core-java-based</module>
         <module>programmer-app-java-based-config</module>
+        <module>core-annotation-based</module>
     </modules>
 
     <properties>
