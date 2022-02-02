@@ -3,32 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>spring-foundations</artifactId>
+        <artifactId>core-HW</artifactId>
         <groupId>ru.itsjava</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>core-HW</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>coffee-machine-java-based-configuration</module>
-        <module>coffee-machine-xml-config</module>
-        <module>coffee-machine-annotation-based-config</module>
-    </modules>
+    <artifactId>coffee-machine-annotation-based-config</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.2.19.RELEASE</version>
-        </dependency>
-
-    </dependencies>
 
 </project>
