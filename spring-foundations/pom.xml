@@ -17,6 +17,7 @@
         <module>core-annotation-based</module>
         <module>programmer-app-annotation-based-config</module>
         <module>lifecycle-and-beans-scope</module>
+        <module>proxy</module>
     </modules>
 
     <properties>
