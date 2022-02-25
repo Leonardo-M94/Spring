@@ -2,5 +2,6 @@ package ru.itsjava.services;
 
 public interface CoffeeMachine {
 
-    void coffeeTransaction();
+    boolean coffeeTransaction();
+    boolean isResourcesEnough();
 }
