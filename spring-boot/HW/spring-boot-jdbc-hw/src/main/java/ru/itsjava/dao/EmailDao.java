@@ -15,4 +15,6 @@ public interface EmailDao {
     void deleteById(long id);
 
     void deleteByEmail(String email);
+
+    Email findById(long id);
 }

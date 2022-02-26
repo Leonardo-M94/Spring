@@ -1,5 +1,6 @@
 package ru.itsjava.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -7,6 +8,7 @@ import java.sql.Date;
 
 @Data
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class Email {
     private long id;
     private final String email;

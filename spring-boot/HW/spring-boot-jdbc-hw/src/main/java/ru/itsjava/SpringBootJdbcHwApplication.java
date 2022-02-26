@@ -36,6 +36,8 @@ public class SpringBootJdbcHwApplication {
 
         emailDao.update(updatedEmail);
 
+        System.out.println("emailDao.findById(1L) = " + emailDao.findById(1L));
+
         emailDao.deleteById(updatedEmail.getId());
 
         emailDao.deleteByEmail(testEmail.getEmail());
