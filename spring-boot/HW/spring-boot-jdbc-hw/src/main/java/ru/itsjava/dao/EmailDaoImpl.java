@@ -3,9 +3,13 @@ package ru.itsjava.dao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import ru.itsjava.domain.Email;
+import ru.itsjava.domain.Pet;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,12 +27,18 @@ public class EmailDaoImpl implements EmailDao {
     }
 
     @Override
-    public void insert(Email email) {
-        Map<String, Object> params = Map.of("email", email.getEmail(), "password", email.getPassword(),
-                "fio", email.getFio(), "birthday", email.getBirthday(), "male", email.getMale());
+    public long insert(Email email) {
+        KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        jdbc.update("insert into emails(email, password, fio, birthday, male) " +
-                "values (:email, :password, :fio, :birthday, :male)", params);
+        Map<String, Object> params = Map.of("email", email.getEmail(), "password", email.getPassword(),
+                "fio", email.getFio(), "birthday", email.getBirthday(), "male", email.getMale(),
+                "pet_id", email.getPet().getId());
+
+        jdbc.update("insert into emails(email, password, fio, birthday, male, pet_id) " +
+                "values (:email, :password, :fio, :birthday, :male, :pet_id)",
+                new MapSqlParameterSource(params), keyHolder);
+
+        return keyHolder.getKey().longValue();
     }
 
     @Override
@@ -66,14 +76,16 @@ public class EmailDaoImpl implements EmailDao {
     public Email findById(long id) {
         Map<String, Object> params = Map.of("id", id);
 
-        return jdbc.queryForObject("select id, email, password, fio, birthday, male from emails where id = :id", params, new EmailMapper());
+        return jdbc.queryForObject("select e.id, email, password, fio, birthday, male, p.id, p.breed " +
+                "from emails e, pet p where e.id = :id and e.pet_id = p.id", params, new EmailMapper());
     }
 
     private static class EmailMapper implements RowMapper<Email> {
         @Override
         public Email mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new Email(rs.getLong("id"), rs.getString("email"), rs.getString("password"),
-                    rs.getString("fio"), rs.getDate("birthday"), rs.getBoolean("male"));
+                    rs.getString("fio"), rs.getDate("birthday"), rs.getBoolean("male"),
+                    new Pet(rs.getLong("id"), rs.getString("breed")));
         }
     }
 }

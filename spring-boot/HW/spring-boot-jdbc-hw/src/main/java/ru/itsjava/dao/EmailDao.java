@@ -6,7 +6,7 @@ public interface EmailDao {
 
     int count();
 
-    void insert(Email email);
+    long insert(Email email);
 
     void update(Email email);   // Для отладки.
 
