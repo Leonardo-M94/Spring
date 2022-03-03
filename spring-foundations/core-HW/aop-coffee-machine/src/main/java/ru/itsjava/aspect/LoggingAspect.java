@@ -22,12 +22,7 @@ public class LoggingAspect {
         return result;
     }
 
-    @Pointcut("execution(* ru.itsjava.services.CoffeeService.*(..))")
-    public void coffeeServiceMethods() {
-    }
-
-
-    @AfterThrowing(pointcut = "coffeeServiceMethods()", throwing = "exception")
+    @AfterThrowing(pointcut = "execution(* ru.itsjava.services.CoffeeService.*(..))", throwing = "exception")
     public void logServiceException(JoinPoint joinPoint, RuntimeException exception) {
         logger.warn(
                 "Exception = \"" + exception.getMessage() + "\"\n" +
