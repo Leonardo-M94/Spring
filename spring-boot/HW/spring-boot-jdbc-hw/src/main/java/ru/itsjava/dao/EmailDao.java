@@ -2,19 +2,20 @@ package ru.itsjava.dao;
 
 import ru.itsjava.domain.Email;
 
-public interface EmailDao {
+import java.util.List;
 
+public interface EmailDao {
     int count();
 
     long insert(Email email);
 
-    void update(Email email);   // Для отладки.
+    void update(Email email);
 
-    void updatePassword(long id, String password);
-
-    void deleteById(long id);
-
-    void deleteByEmail(String email);
+    void delete(Email email);
 
     Email findById(long id);
+
+    Email findByLogin(String email);
+
+    List<Email> findAll();
 }

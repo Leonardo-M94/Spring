@@ -1,18 +1,30 @@
-DROP TABLE IF EXISTS emails, pet;
+DROP TABLE IF EXISTS users, emails, pet;
 
-CREATE TABLE emails(
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    email VARCHAR2(30) NOT NULL UNIQUE,
-    password VARCHAR2(100) NOT NULL ,
-    FIO VARCHAR2(256) NOT NULL,
+CREATE TABLE users
+(
+    id       BIGINT PRIMARY KEY AUTO_INCREMENT,
+    fio      VARCHAR2(256) NOT NULL,
     birthday DATE,
-    male BOOLEAN,
-    pet_id BIGINT
+    male     BOOLEAN,
+    email_id BIGINT,
+    pet_id   BIGINT
 );
 
-CREATE TABLE pet(
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE emails
+(
+    id       BIGINT PRIMARY KEY AUTO_INCREMENT,
+    email    VARCHAR2(100) NOT NULL UNIQUE,
+    password VARCHAR2(100) NOT NULL
+);
+
+CREATE TABLE pet
+(
+    id    BIGINT PRIMARY KEY AUTO_INCREMENT,
     breed VARCHAR2(50) NOT NULL
 );
 
-ALTER TABLE emails ADD FOREIGN KEY (pet_id) REFERENCES pet(id);
+ALTER TABLE users
+    ADD FOREIGN KEY (email_id) REFERENCES emails (id);
+
+ALTER TABLE users
+    ADD FOREIGN KEY (pet_id) REFERENCES pet (id);

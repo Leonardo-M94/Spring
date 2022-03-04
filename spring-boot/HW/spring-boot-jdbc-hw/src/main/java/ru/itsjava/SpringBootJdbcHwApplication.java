@@ -5,8 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import ru.itsjava.domain.Email;
+import ru.itsjava.domain.User;
 import ru.itsjava.domain.Pet;
-import ru.itsjava.services.EmailService;
+import ru.itsjava.services.AppService;
+import ru.itsjava.services.UserService;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -17,10 +19,12 @@ public class SpringBootJdbcHwApplication {
     public static void main(String[] args) throws SQLException {
 
         ApplicationContext context = SpringApplication.run(SpringBootJdbcHwApplication.class, args);
-        context.getBean(EmailService.class).insert(
-                new Email("newEmail-90@mail.ru", "r4sdfsUIN09", "Test Testovich",
-                        Date.valueOf("1990-11-10"), true, new Pet(1L, "Мейкун"))
-        );
+//        context.getBean(UserService.class).insert(
+//                new User("Barzheev Semen Semenovich", Date.valueOf("1990-11-10"), true,
+//                        new Email(5L, "Test-qwerty123@mail.ru", "jGhF409BLki"),
+//                        new Pet(1L, "Мейкун"))
+//        );
+        context.getBean(AppService.class).start();
 
         Console.main(args);
     }
