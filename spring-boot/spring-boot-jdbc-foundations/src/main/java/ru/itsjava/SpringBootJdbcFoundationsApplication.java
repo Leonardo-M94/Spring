@@ -1,23 +1,16 @@
 package ru.itsjava;
 
-import org.h2.tools.Console;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import ru.itsjava.domain.Faculty;
-import ru.itsjava.domain.Student;
-import ru.itsjava.services.StudentService;
-
-import java.sql.SQLException;
+import ru.itsjava.services.AppService;
 
 @SpringBootApplication
 public class SpringBootJdbcFoundationsApplication {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(SpringBootJdbcFoundationsApplication.class, args);
-        context.getBean(StudentService.class).insert(new Student("Myagkov", 20, new Faculty(1L, "Android Development")));
-
-        Console.main(args);
+        context.getBean(AppService.class).start();
     }
 
 }

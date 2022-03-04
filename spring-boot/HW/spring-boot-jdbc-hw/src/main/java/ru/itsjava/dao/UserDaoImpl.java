@@ -64,7 +64,7 @@ public class UserDaoImpl implements UserDao {
         return jdbc.queryForObject("select u.id as UID, fio, birthday, male, e.id as EID, email, password, p.id as PID, breed " +
                         "from users u, emails e, pet p " +
                         "where u.id = :id and u.email_id = e.id and u.pet_id = p.id",
-                params, new UserMapper());
+                new MapSqlParameterSource(params), new UserMapper());
     }
 
     @Override
