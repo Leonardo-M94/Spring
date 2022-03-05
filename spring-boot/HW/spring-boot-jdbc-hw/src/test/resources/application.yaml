@@ -2,3 +2,10 @@ spring:
   sql:
     init:
       data-locations: data.sql
+
+app-service-test:
+  welcome: "Welcome\r\n"
+  menu-out: "Input menu number.\r\n1 - Print all users,\n2 - Add user,\nelse - Exit\r\n"
+  print-users: "User list: \r\nUser{id=1, fio='Ivanov Ivan Ivanovich', birthday=1990-11-10, male=true, Email(id=1, email=user1-Ivanov@mail.ru, password=r46RbUIN09), Pet(id=1, breed=Cat)}\r\nUser{id=2, fio='Petrov Anton Mihaylovich', birthday=1995-07-19, male=true, Email(id=2, email=Ant.Petrov-95@yandex.ru, password=dki23ERS8323), Pet(id=2, breed=Dog)}\r\n"
+  insert_users: "Input email as your login: \r\nSet a password: \r\nInput user FIO: \r\nInput user birthday in format yyyy-mm-dd: \r\nInput user male in format m/w: \r\nInput your pet breed: \r\nНовый user c id = 3\r\n"
+  exit: "App exit\r\n"

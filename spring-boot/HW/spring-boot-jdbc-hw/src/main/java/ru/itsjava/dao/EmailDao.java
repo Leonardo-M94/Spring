@@ -3,6 +3,7 @@ package ru.itsjava.dao;
 import ru.itsjava.domain.Email;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EmailDao {
     int count();
@@ -15,7 +16,7 @@ public interface EmailDao {
 
     Email findById(long id);
 
-    Email findByLogin(String email);
+    Optional<Email> findByLogin(String email);
 
     List<Email> findAll();
 }

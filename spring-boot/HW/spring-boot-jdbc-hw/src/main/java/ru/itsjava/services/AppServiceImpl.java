@@ -2,14 +2,14 @@ package ru.itsjava.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.itsjava.dao.PetDao;
-import ru.itsjava.dao.UserDao;
 import ru.itsjava.domain.Email;
 import ru.itsjava.domain.Pet;
 import ru.itsjava.domain.User;
+import ru.itsjava.exceptions.AlreadyExistEmailException;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -17,8 +17,8 @@ public class AppServiceImpl implements AppService {
 
     private final UserService userService;
     private final EmailService emailService;
+    private final PetService petService;
     private final IOService ioService;
-    private final PetDao petDao;
 
     @Override
     public void start() {
@@ -36,20 +36,65 @@ public class AppServiceImpl implements AppService {
                     insertUser();
                     break;
                 default:
-                    System.exit(0);
+                    System.out.println("App exit");
+                    return;
+            }
+        }
+    }
+
+    private Pet choosePet() {   // Проверяем наличие breed в БД, добавляем в БД новую запись
+        Optional<Pet> optionalPet = Optional.empty();
+
+        while (optionalPet.isEmpty()) {
+            System.out.println("Input your pet breed: ");
+            String breed = ioService.input();
+
+            optionalPet = petService.findByName(breed);
+
+            if (!optionalPet.isPresent()) {
+                System.out.println("The entry does not exist in the DB.");
+                System.out.println("1 - Download a list of existing breed,\n2 - Add new entry,\nelse - Cancel");
+
+                switch (ioService.inputInt()) {
+                    case 1:
+                        for (Pet pet : petService.findAll()) {
+                            System.out.println("\t- " + pet.getBreed());
+                        }
+                        break;
+                    case 2:
+                        petService.insert(new Pet(breed));
+                        optionalPet = petService.findByName(breed);
+                        break;
+                    default:
+                        System.exit(0);
+                }
+            }
+        }
+        return optionalPet.get();
+    }
+
+    private Email insertEmail() { // Проверяем уникальность логина при insert
+        while (true) {
+            try {
+                System.out.println("Input email as your login: ");
+                String email = ioService.input();
+
+                System.out.println("Set a password: ");
+                String password = ioService.input();
+
+                emailService.insert(new Email(email, password));
+
+                return emailService.findByLogin(email).get();
+
+            } catch (AlreadyExistEmailException exception) {
+                System.out.println(exception.getMessage());
             }
         }
     }
 
     @Override
     public void insertUser() {
-        System.out.println("Input email as your login: ");
-        String email = ioService.input();
-
-        System.out.println("Set a password: ");
-        String password = ioService.input();
-
-        Email newEmail = new Email(email, password);
+        Email email = insertEmail();
 
         System.out.println("Input user FIO: ");
         String fio = ioService.input();
@@ -65,13 +110,9 @@ public class AppServiceImpl implements AppService {
             male = false;
         }
 
-        System.out.println("Input your pet breed: ");
-        Pet pet = petDao.findByName(ioService.input());
+        Pet pet = choosePet();
 
-        long emailId = emailService.insert(newEmail);
-        newEmail.setId(emailId);
-
-        User newUser = new User(fio, birthday, male, newEmail, pet);
+        User newUser = new User(fio, birthday, male, email, pet);
 
         userService.insert(newUser);
     }
@@ -81,9 +122,8 @@ public class AppServiceImpl implements AppService {
         List<User> usersList = userService.findAll();
 
         System.out.println("User list: ");
-        for(User user: usersList) {
+        for (User user : usersList) {
             System.out.println(user);
         }
-        System.out.println("");
     }
 }

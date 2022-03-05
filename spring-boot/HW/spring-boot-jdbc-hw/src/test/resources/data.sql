@@ -1,6 +1,6 @@
 INSERT INTO pet(id, breed) VALUES
-(1, 'Кошка'),
-(2, 'Собака');
+(1, 'Cat'),
+(2, 'Dog');
 
 INSERT INTO emails(id, email, password) VALUES
 (1, 'user1-Ivanov@mail.ru', 'r46RbUIN09'),

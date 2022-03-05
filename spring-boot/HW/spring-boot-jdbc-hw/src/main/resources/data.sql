@@ -1,9 +1,9 @@
 INSERT INTO pet(id, breed) VALUES
-(1, 'Кошка'),
-(2, 'Собака'),
-(3, 'Крыса'),
-(4, 'Попугай'),
-(5, 'Кролик');
+(1, 'Cat'),
+(2, 'Dog'),
+(3, 'Rat'),
+(4, 'Parrot'),
+(5, 'Rabbit');
 
 INSERT INTO emails(id, email, password) VALUES
 (1, 'user1-Ivanov@mail.ru', 'r46RbUIN09'),

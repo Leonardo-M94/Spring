@@ -16,4 +16,16 @@ public class User {
     private final Boolean male;
     private final Email email;
     private final Pet pet;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", fio='" + fio + '\'' +
+                ", birthday=" + birthday +
+                ", male=" + male +
+                ", " + email +
+                ", " + pet +
+                '}';
+    }
 }

@@ -1,6 +1,7 @@
 package ru.itsjava.dao;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
@@ -13,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -53,13 +55,17 @@ public class EmailDaoImpl implements EmailDao {
     @Override
     public Email findById(long id) {
         return jdbc.queryForObject("select id, email, password from emails where id = :id",
-                Map.of("id", id), new EmailMapper());
+                new MapSqlParameterSource(Map.of("id", id)), new EmailMapper());
     }
 
     @Override
-    public Email findByLogin(String email) {
-        return jdbc.queryForObject("select id, email, password from emails where email = :email",
-                Map.of("email", email), new EmailMapper());
+    public Optional<Email> findByLogin(String email) {
+        try {
+            return Optional.ofNullable(jdbc.queryForObject("select id, email, password from emails where email = :email",
+                    new MapSqlParameterSource(Map.of("email", email)), new EmailMapper()));
+        } catch (EmptyResultDataAccessException exception) {
+            return Optional.empty();
+        }
     }
 
     @Override
