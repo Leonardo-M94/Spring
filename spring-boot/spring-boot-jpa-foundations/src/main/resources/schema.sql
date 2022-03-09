@@ -1,0 +1,6 @@
+drop table if exists films;
+
+CREATE TABLE FILMS(
+    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    TITLE VARCHAR2(256)
+);
