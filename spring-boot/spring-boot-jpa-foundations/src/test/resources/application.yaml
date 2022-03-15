@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+  jpa:
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+  sql:
+    init:
+      data-locations: test_data.sql
+#    properties:
+#      hibernate:
+#        default_schema: schema.sql
