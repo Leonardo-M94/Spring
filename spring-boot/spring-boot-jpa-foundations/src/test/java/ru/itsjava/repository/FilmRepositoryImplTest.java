@@ -25,9 +25,9 @@ public class FilmRepositoryImplTest {
     public static final String DEFAULT_FILM_NAME = "Scream";
     public static final String DEFAULT_FILM_GENRE = "fantasy";
 
-    public static Place DEFAULT_NEW_PLACE = new Place(4L, "Germany", 3L);
-    public static Genre DEFAULT_NEW_GENRE = new Genre(4L, "fantastic");
-    public static Film DEFAULT_NEW_FILM = new Film(
+    public static final Place DEFAULT_NEW_PLACE = new Place(4L, "Germany", 3L);
+    public static final Genre DEFAULT_NEW_GENRE = new Genre(4L, "fantastic");
+    public static final Film DEFAULT_NEW_FILM = new Film(
             3L, "Star Trek",
             DEFAULT_NEW_GENRE,
             Arrays.asList(DEFAULT_NEW_PLACE)
