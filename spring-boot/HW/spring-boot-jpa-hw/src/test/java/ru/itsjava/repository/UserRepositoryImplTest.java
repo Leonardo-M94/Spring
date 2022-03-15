@@ -29,7 +29,12 @@ public class UserRepositoryImplTest {
 
     public static final long DEFAULT_FIRST_ID = 1L;
     public static final long DEFAULT_DELETED_ID = 2L;
+    public static final String DEFAULT_NEW_FIO = "Zaicev Dima";
 
+    public static final Pet DEFAULT_NEW_PET = new Pet(1, "Cat");
+    public static final Email DEFAULT_NEW_EMAIL = new Email(4L, "Kovaleva.Anna.Vas@gmail.com", "fsds78REW78J");
+    public static final User DEFAULT_NEW_USER = new User(3L, "Kovaleva Anna Vasilyevna", Date.valueOf("1989-01-23"), false,
+            DEFAULT_NEW_EMAIL, DEFAULT_NEW_PET);
     @Test
     public void shouldHaveCorrectFindAll() {
         List<User> expectedUsersList = entityManager
@@ -59,20 +64,16 @@ public class UserRepositoryImplTest {
 
     @Test
     public void shouldHaveCorrectInsert() {
-        User expectedUser = new User(3L, "Kovaleva Anna Vasilyevna", Date.valueOf("1989-01-23"), false,
-                new Email(4L, "Kovaleva.Anna.Vas@gmail.com", "fsds78REW78J"),
-                new Pet(1, "Cat"));
+        userRepository.insert(DEFAULT_NEW_USER);
+        User actualUser = userRepository.getById(DEFAULT_NEW_USER.getId());
 
-        userRepository.insert(expectedUser);
-        User actualUser = userRepository.getById(3L);
-
-        assertEquals(expectedUser, actualUser);
+        assertEquals(DEFAULT_NEW_USER, actualUser);
     }
 
     @Test
     public void shouldHaveCorrectUpdate() {
         User expectedUser = userRepository.getById(DEFAULT_FIRST_ID);
-        expectedUser.setFio("Zaicev Dima");
+        expectedUser.setFio(DEFAULT_NEW_FIO);
 
         userRepository.update(expectedUser);
         User actualUser = userRepository.getById(DEFAULT_FIRST_ID);
