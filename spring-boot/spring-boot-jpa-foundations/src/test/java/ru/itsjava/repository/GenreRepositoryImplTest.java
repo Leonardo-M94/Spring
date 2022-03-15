@@ -9,6 +9,8 @@ import ru.itsjava.domain.Genre;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -25,6 +27,22 @@ public class GenreRepositoryImplTest {
 
     @Autowired
     private GenreRepository genreRepository;
+
+    @Test
+    public void shouldHaveCorrectGetById() {
+        Genre expectedGenre = entityManager.find(Genre.class, DEFAULT_UPDATED_GENRE_ID);
+        Genre actualGenre = genreRepository.getById(DEFAULT_UPDATED_GENRE_ID);
+
+        assertEquals(expectedGenre, actualGenre);
+    }
+
+    @Test
+    public void shouldHaveCorrectFindAll() {
+        List<Genre> expectedGenreList = entityManager.createQuery("select g from genre g", Genre.class).getResultList();
+        List<Genre> actualGenreList = genreRepository.findAll();
+
+        assertEquals(expectedGenreList, actualGenreList);
+    }
 
     @Test
     public void shouldHaveCorrectInsert() {
