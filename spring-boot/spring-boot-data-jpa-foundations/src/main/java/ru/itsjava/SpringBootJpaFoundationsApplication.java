@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ru.itsjava.service.FilmService;
 import ru.itsjava.service.GenreService;
+import ru.itsjava.service.PlaceService;
 
 @SpringBootApplication
 public class SpringBootJpaFoundationsApplication {
@@ -19,6 +20,8 @@ public class SpringBootJpaFoundationsApplication {
         genreService.changeGenre("fantasy", "comedy");
         genreService.printGenre("comedy");
 
+        PlaceService placeService = context.getBean(PlaceService.class);
+        placeService.printAll();
     }
 
 }
