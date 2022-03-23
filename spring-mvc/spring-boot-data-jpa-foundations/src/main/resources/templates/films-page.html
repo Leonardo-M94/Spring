@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>
+    Films
+</h1>
+
+<table width="400">
+    <tr>
+        <th>Name</th>
+        <th>Genre</th>
+        <th>Places</th>
+    </tr>
+    <tr th:each="film: ${films}">
+        <td th:text="${film.title}">The Best Film</td>
+        <td th:text="${film.genre}">The Best Genre</td>
+        <td th:text="${film.places}">The Best Places</td>
+    </tr>
+</table>
+
+</body>
+</html>
