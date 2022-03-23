@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h1>Users</h1>
+<table border="1">
+    <tr>
+        <th>FIO</th>
+        <th>Birthday</th>
+        <th>Male</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Breed</th>
+    </tr>
+    <tr th:each="user: ${users}">
+        <td th:text="${user.fio}"></td>
+        <td th:text="${user.birthday}"></td>
+        <td th:text="${user.male}"></td>
+        <td th:text="${user.emailDto.email}"></td>
+        <td th:text="${user.emailDto.password}"></td>
+        <td th:text="${user.petDto.breed}"></td>
+    </tr>
+
+</table>
+
+</body>
+</html>
