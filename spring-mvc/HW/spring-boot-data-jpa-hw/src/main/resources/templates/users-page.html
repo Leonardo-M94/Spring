@@ -16,12 +16,12 @@
         <th>Breed</th>
     </tr>
     <tr th:each="user: ${users}">
-        <td th:text="${user.fio}"></td>
-        <td th:text="${user.birthday}"></td>
-        <td th:text="${user.male}"></td>
-        <td th:text="${user.emailDto.email}"></td>
-        <td th:text="${user.emailDto.password}"></td>
-        <td th:text="${user.petDto.breed}"></td>
+        <td th:text="${user.fio}">fio</td>
+        <td th:text="${user.birthday}">birthday</td>
+        <td th:text="${user.male}">male</td>
+        <td th:text="${user.emailDto.email}">email</td>
+        <td th:text="${user.emailDto.password}">password</td>
+        <td th:text="${user.petDto.breed}">breed</td>
     </tr>
 
 </table>
