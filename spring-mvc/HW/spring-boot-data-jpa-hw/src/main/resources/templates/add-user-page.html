@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add user</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <style>
+        div.row{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<form id="add-user-post" th:action="@{/user/add}" th:method="post" action="add-user-page.html">
+    <h1>User registration:</h1>
+
+    <div class="row">
+        <label for="email-input">Email:</label>
+        <input id="email-input" name="email" type="text" value="" width="200"/>
+    </div>
+    <div class="row">
+        <label for="password-input">Password:</label>
+        <input id="password-input" name="password" type="text" value="" width="200"/>
+    </div>
+    <div class="row">
+        <label for="fio-input">FIO:</label>
+        <input id="fio-input" name="fio" type="text" value="" width="200"/>
+    </div>
+    <div class="row">
+        <label for="birthday-input">Birthday:</label>
+        <input id="birthday-input" name="birthday" type="date" value="" min="1990-01-01" max="2022-12-31"/>
+    </div>
+    <div class="row">
+        <label for="male-radio">M:</label>
+        <input id="male-radio" name="male" type="radio" value="true"/>
+        <label for="female-radio">W:</label>
+        <input id="female-radio" name="male" type="radio" value="false"/>
+    </div>
+
+    <div class="row">
+        <label for="breed-sel">Breed:</label>
+        <select id="breed-sel" name="breed">
+            <option value="">Select breed</option>
+            <option th:each="pet: ${pets}" th:value="${pet.breed}" th:text="${pet.breed}"></option>
+        </select>
+    </div>
+
+    <div class="row">
+        <button type="submit" name="OK">Create</button>
+    </div>
+</form>
+
+</body>
+</html>

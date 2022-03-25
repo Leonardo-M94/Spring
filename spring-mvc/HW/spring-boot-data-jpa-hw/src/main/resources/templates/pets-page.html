@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pets</title>
+</head>
+<body>
+    <h3>Pets breeds:</h3>
+    <ul th:each="pet: ${pets}">
+        <li th:text="${pet.breed}">Cat</li>
+    </ul>
+    <a href="add-pet-page.html" th:href="@{/pet/add}">
+        <button type="button" name="add-btn">Add breed</button>
+    </a>
+</body>
+</html>

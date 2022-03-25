@@ -13,6 +13,10 @@ public class PetDto {
 
     public static Pet fromDto(PetDto petDto) {
 
+        if (petDto.id == null) {
+            petDto.id = "0";
+        }
+
         return new Pet(Long.parseLong(petDto.id), petDto.breed);
     }
 

@@ -20,7 +20,7 @@ public class User {
     private Boolean male;
 
     @JoinColumn(name = "email_id")
-    @OneToOne(targetEntity = Email.class, cascade = CascadeType.MERGE)
+    @OneToOne(targetEntity = Email.class, cascade = CascadeType.ALL)
     private Email email;
 
     @JoinColumn(name = "pet_id")

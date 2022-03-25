@@ -19,6 +19,10 @@ public class UserDto {
 
     public static User fromDto(UserDto userDto) {
 
+        if (userDto.id == null) {
+            userDto.id = "0";
+        }
+
         return new User(
                 Long.parseLong(userDto.id),
                 userDto.fio,

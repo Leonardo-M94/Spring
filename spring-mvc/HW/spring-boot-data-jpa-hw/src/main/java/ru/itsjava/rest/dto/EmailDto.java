@@ -14,6 +14,10 @@ public class EmailDto {
 
     public static Email fromDto(EmailDto emailDto) {
 
+        if (emailDto.id == null) {
+            emailDto.id = "0";
+        }
+
         return new Email(Long.parseLong(emailDto.id), emailDto.email, emailDto.password);
     }
 
