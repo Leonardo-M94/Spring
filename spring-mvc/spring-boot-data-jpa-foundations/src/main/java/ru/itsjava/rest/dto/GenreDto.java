@@ -16,7 +16,9 @@ public class GenreDto {
     }
 
     public static Genre fromDto(GenreDto genreDto) {
-
-        return new Genre(0L, genreDto.name);
+        if (genreDto.id == null) {
+            genreDto.id = "0";
+        }
+        return new Genre(Long.parseLong(genreDto.id), genreDto.name);
     }
 }

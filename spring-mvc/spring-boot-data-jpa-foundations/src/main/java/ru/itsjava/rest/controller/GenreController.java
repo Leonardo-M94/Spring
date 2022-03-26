@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.itsjava.domain.Genre;
 import ru.itsjava.rest.dto.GenreDto;
 import ru.itsjava.service.GenreService;
 
@@ -23,12 +24,12 @@ public class GenreController {
         return "get-genre-page";
     }
 
-    @GetMapping({"/genres"})
+    @GetMapping({"/genre"})
     public String getPage(Model model) {
 
         List<GenreDto> genreDtoList = genreService.getAllGenres()
                 .stream()
-                .map(genre -> GenreDto.toDto(genre))
+                .map(GenreDto::toDto)
                 .collect(Collectors.toList());
 
         model.addAttribute("genres", genreDtoList);
@@ -43,6 +44,52 @@ public class GenreController {
     @PostMapping({"genre/add"})
     public String afterAddPage(GenreDto genreDto) {
         this.genreService.createGenre(GenreDto.fromDto(genreDto));
-        return "redirect:/genres";
+        return "redirect:/genre";
     }
+
+    @GetMapping("genre/{id}/edit")
+    public String editPage(@PathVariable("id") long id, Model model) {
+        Genre genreById = genreService.getGenreById(id);
+        model.addAttribute("genreDto", GenreDto.toDto(genreById));
+        return "edit-genre-page";
+    }
+
+    @PostMapping("genre/{id}/edit")
+    public String afterEditPage(GenreDto genreDto) {
+        genreService.updateGenre(GenreDto.fromDto(genreDto));
+        return "redirect:/genre";
+    }
+
+    @GetMapping("genre/{id}/delete")
+    public String deletePage(@PathVariable("id") long id, Model model) {
+        Genre genreById = genreService.getGenreById(id);
+        model.addAttribute("genreDto", GenreDto.toDto(genreById));
+        return "delete-genre-page";
+    }
+
+    @PostMapping("genre/{id}/delete")
+    public String afterDeletePage(GenreDto genreDto) {
+        genreService.deleteGenre(GenreDto.fromDto(genreDto));
+        return "redirect:/genre";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

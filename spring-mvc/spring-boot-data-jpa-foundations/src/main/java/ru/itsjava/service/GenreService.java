@@ -10,11 +10,15 @@ public interface GenreService {
 
     void changeGenre(String oldName, String updatedName);
 
+    void updateGenre(Genre genre);
+
     void printGenre(String name);
 
     void createGenre(Genre genre);
 
     Genre getGenreById(long id);
+
+    void deleteGenre(Genre genre);
 
     void deleteGenreById(long id);
 }

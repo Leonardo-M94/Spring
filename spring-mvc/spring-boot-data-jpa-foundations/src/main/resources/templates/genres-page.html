@@ -9,7 +9,9 @@
 
     <ul th:each="genre: ${genres}">
         <li th:text="${genre.name}">Genre type</li>
+        <a th:href="@{/genre/{id}/edit(id=${genre.id})}" href="edit-genre-page.html">Update</a>
+        <a th:href="@{/genre/{id}/delete(id=${genre.id})}" href="delete-genre-page.html">Delete</a>
     </ul>
-
+    <a th:href="@{/genre/add}" href="add-genre-page.html">Add new genre</a>
 </body>
 </html>

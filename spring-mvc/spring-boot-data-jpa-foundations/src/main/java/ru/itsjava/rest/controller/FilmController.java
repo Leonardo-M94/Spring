@@ -15,7 +15,7 @@ import ru.itsjava.service.FilmService;
 public class FilmController {
     private final FilmService filmService;
 
-    @GetMapping({"/films"})
+    @GetMapping({"/film"})
     public String allPage(Model model) {
         List<FilmDto> filmDtoList = filmService.getAllFilms()
                 .stream()

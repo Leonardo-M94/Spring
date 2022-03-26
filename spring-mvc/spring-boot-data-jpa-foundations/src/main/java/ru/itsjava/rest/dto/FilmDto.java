@@ -19,6 +19,10 @@ public class FilmDto {
     private String places;
 
     public static Film fromDto(FilmDto filmDto) {
+        if (filmDto.id == null) {
+            filmDto.id = "0";
+        }
+
         long id = Long.parseLong(filmDto.id);
         Genre genre = new Genre(0L, filmDto.genre);
 
