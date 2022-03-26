@@ -8,16 +8,16 @@ import ru.itsjava.domain.Pet;
 @Data
 public class PetDto {
 
-    private String id;
+    private String id_pet;
     private String breed;
 
     public static Pet fromDto(PetDto petDto) {
 
-        if (petDto.id == null) {
-            petDto.id = "0";
+        if (petDto.id_pet == null) {
+            petDto.id_pet = "0";
         }
 
-        return new Pet(Long.parseLong(petDto.id), petDto.breed);
+        return new Pet(Long.parseLong(petDto.id_pet), petDto.breed);
     }
 
     public static PetDto toDto(Pet pet) {

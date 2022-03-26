@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete pet</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <style>
+        div.row{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<form id="add-user-post" th:action="@{/pet/{id}/delete(id=${pet.id_pet})}" th:method="post" action="delete-pet-page.html">
+    <h1>Delete pet</h1>
+    <div class="row">
+        <label for="id-input">ID:</label>
+        <input id="id-input" readonly="readonly" name="id_pet" type="text" th:value="${pet.id_pet}" width="200"/>
+    </div>
+    <div class="row">
+        <label for="breed-input">Breed:</label>
+        <input id="breed-input" readonly="readonly" name="breed" type="text" th:value="${pet.breed}" width="200"/>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <button type="submit" name="OK">Delete</button>
+    </div>
+</form>
+</body>
+</html>

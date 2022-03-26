@@ -3,28 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
+    <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
 <h1>Users</h1>
 <table border="1">
     <tr>
+        <th>ID</th>
         <th>FIO</th>
         <th>Birthday</th>
         <th>Male</th>
         <th>Email</th>
         <th>Password</th>
         <th>Breed</th>
+        <th><i>Edit</i></th>
+        <th><i>Delete</i></th>
     </tr>
     <tr th:each="user: ${users}">
+        <td th:text="${user.getId_user}">id</td>
         <td th:text="${user.fio}">fio</td>
         <td th:text="${user.birthday}">birthday</td>
         <td th:text="${user.male}">male</td>
         <td th:text="${user.emailDto.email}">email</td>
         <td th:text="${user.emailDto.password}">password</td>
         <td th:text="${user.petDto.breed}">breed</td>
+        <td>
+            <a href="edit-user-page.html" th:href="@{/user/{id}/edit(id=${user.getId_user})}" style="text-decoration:none">
+                <button type="button">Edit user</button>
+            </a>
+        </td>
+
+        <td>
+            <a href="delete-user-page.html" th:href="@{/user/{id}/delete(id=${user.getId_user})}" style="text-decoration:none">
+                <button type="button">Delete user</button>
+            </a>
+        </td>
     </tr>
 
 </table>
+
+<tr>
+    <td>
+        <a href="add-user-page.html" th:href="@{/user/add}" style="text-decoration:none">
+            <button type="button" style="margin-top: 20px">Add user</button>
+        </a>
+    </td>
+</tr>
+
 
 </body>
 </html>

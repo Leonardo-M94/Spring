@@ -10,7 +10,7 @@ import java.sql.Date;
 @Data
 public class UserDto {
 
-    private String id;
+    private String id_user;
     private String fio;
     private String birthday;
     private String male;
@@ -19,12 +19,12 @@ public class UserDto {
 
     public static User fromDto(UserDto userDto) {
 
-        if (userDto.id == null) {
-            userDto.id = "0";
+        if (userDto.id_user == null) {
+            userDto.id_user = "0";
         }
 
         return new User(
-                Long.parseLong(userDto.id),
+                Long.parseLong(userDto.id_user),
                 userDto.fio,
                 Date.valueOf(userDto.birthday),
                 Boolean.valueOf(userDto.male),

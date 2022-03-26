@@ -30,21 +30,27 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void update(User user) {
-        Optional<User> optionalUser = userRepository.getByEmail(user.getEmail());
-        if (optionalUser.isPresent()) {
-            User updatedUser = optionalUser.get();
-            if ((!user.getFio().isEmpty()) &&
-                    (!updatedUser.getFio().equals(user.getFio()))) {
-                updatedUser.setFio(user.getFio());
-            }
-            userRepository.save(updatedUser);
-        }
+//        Optional<User> optionalUser = userRepository.getByEmail(user.getEmail());
+//        if (optionalUser.isPresent()) {
+//            User updatedUser = optionalUser.get();
+//            updatedUser.setFio();
+//            }
+//
+//        }
+        userRepository.save(user);
     }
 
     @Transactional
     @Override
     public void delete(User user) {
         userRepository.delete(user);
+    }
+
+    @Transactional
+    @Override
+    public void deleteById(long id) {
+        userRepository.deleteById(id);
+
     }
 
     @Transactional(readOnly = true)

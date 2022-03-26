@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete user</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <style>
+        div.row{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Delete user</h1>
+
+    <form id="edit-user-post" th:action="@{/user/{id}/delete(id=${userDto.id_user})}" th:method="post" action="delete-user-page.html">
+
+        <div class="row">
+            <label for="id-input">ID:</label>
+            <input id="id-input" readonly="readonly" name="id_user" type="text" th:value="${userDto.id_user}" width="200"/>
+        </div>
+
+        <div class="row">
+            <label for="email-input">Email:</label>
+            <input id="email-input" readonly="readonly" name="email" type="text" th:value="${userDto.emailDto.email}" width="200"/>
+            <input type="hidden" name="id_email" th:value="${userDto.emailDto.id_email}" />
+        </div>
+        <div class="row">
+            <label for="password-input">Password:</label>
+            <input id="password-input" readonly="readonly" name="password" type="text" th:value="${userDto.emailDto.password}" width="200"/>
+        </div>
+        <div class="row">
+            <label for="fio-input">FIO:</label>
+            <input id="fio-input" readonly="readonly" name="fio" type="text" th:value="${userDto.fio}" width="200"/>
+        </div>
+        <div class="row">
+            <label for="birthday-input">Birthday:</label>
+            <input id="birthday-input" readonly="readonly" name="birthday" type="text" th:value="${userDto.birthday}" min="1900-01-01" max="2022-12-31"/>
+        </div>
+        <div class="row">
+            <label for="male-input">M:</label>
+            <input id="male-input" readonly="readonly" th:value="${userDto.male} ? 'true':'false'"/>
+        </div>
+
+        <div class="row">
+            <label for="breed-input">Breed:</label>
+            <input id="breed-input" th:value="${userDto.petDto.breed}"/>
+        </div>
+
+        <div class="row">
+            <button type="submit" name="OK">Delete</button>
+        </div>
+    </form>
+
+</body>
+</html>

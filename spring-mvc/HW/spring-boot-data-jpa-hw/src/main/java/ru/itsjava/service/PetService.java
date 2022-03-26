@@ -12,4 +12,10 @@ public interface PetService {
     List<Pet> findAll();
 
     Optional<Pet> findByName(String name);
+
+    Pet findById(long id);
+
+    void delete(Pet pet);
+
+    void update(Pet pet);
 }

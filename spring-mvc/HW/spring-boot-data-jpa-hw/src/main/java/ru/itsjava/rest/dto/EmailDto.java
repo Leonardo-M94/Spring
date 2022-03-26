@@ -8,17 +8,17 @@ import ru.itsjava.domain.Email;
 @Data
 public class EmailDto {
 
-    private String id;
+    private String id_email;
     private String email;
     private String password;
 
     public static Email fromDto(EmailDto emailDto) {
 
-        if (emailDto.id == null) {
-            emailDto.id = "0";
+        if (emailDto.id_email == null) {
+            emailDto.id_email = "0";
         }
 
-        return new Email(Long.parseLong(emailDto.id), emailDto.email, emailDto.password);
+        return new Email(Long.parseLong(emailDto.id_email), emailDto.email, emailDto.password);
     }
 
     public static EmailDto toDto(Email email) {

@@ -8,6 +8,8 @@
     <h3>Pets breeds:</h3>
     <ul th:each="pet: ${pets}">
         <li th:text="${pet.breed}">Cat</li>
+        <a th:href="@{/pet/{id}/edit(id=${pet.id_pet})}" href="edit-pet-page.html">Update</a>
+        <a th:href="@{/pet/{id}/delete(id=${pet.id_pet})}" href="delete-pet-page.html">Delete</a>
     </ul>
     <a href="add-pet-page.html" th:href="@{/pet/add}">
         <button type="button" name="add-btn">Add breed</button>

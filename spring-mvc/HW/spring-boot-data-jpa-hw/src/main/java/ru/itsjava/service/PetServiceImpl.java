@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.itsjava.domain.Pet;
 import ru.itsjava.exception.AlreadyExistPetBreedException;
 import ru.itsjava.repository.PetRepository;
+import ru.itsjava.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class PetServiceImpl implements PetService {
 
     private final PetRepository petRepository;
+    private final UserRepository userRepository;
 
     @Transactional
     @Override
@@ -37,5 +39,24 @@ public class PetServiceImpl implements PetService {
     @Override
     public Optional<Pet> findByName(String name) {
         return petRepository.getByBreed(name);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Pet findById(long id) {
+        return petRepository.getById(id);
+    }
+
+    @Transactional
+    @Override
+    public void delete(Pet pet) {
+        userRepository.deleteAllByPet(pet);
+        petRepository.delete(pet);
+    }
+
+    @Transactional
+    @Override
+    public void update(Pet pet) {
+        petRepository.save(pet);
     }
 }

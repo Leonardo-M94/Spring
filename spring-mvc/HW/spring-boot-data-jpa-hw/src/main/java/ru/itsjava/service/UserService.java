@@ -13,6 +13,8 @@ public interface UserService {
 
     void delete(User user);
 
+    void deleteById(long id);
+
     User findById(long id);
 
     List<User> findAll();
