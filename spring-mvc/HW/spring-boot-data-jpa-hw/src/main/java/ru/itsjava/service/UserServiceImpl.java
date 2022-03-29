@@ -7,12 +7,10 @@ import ru.itsjava.domain.User;
 import ru.itsjava.repository.UserRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-
     private final UserRepository userRepository;
 
     @Transactional(readOnly = true)
@@ -30,13 +28,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void update(User user) {
-//        Optional<User> optionalUser = userRepository.getByEmail(user.getEmail());
-//        if (optionalUser.isPresent()) {
-//            User updatedUser = optionalUser.get();
-//            updatedUser.setFio();
-//            }
-//
-//        }
         userRepository.save(user);
     }
 
@@ -50,7 +41,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(long id) {
         userRepository.deleteById(id);
-
     }
 
     @Transactional(readOnly = true)

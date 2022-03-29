@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete pet</title>
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <style>
         div.row{
             margin-bottom: 10px;
@@ -11,7 +11,7 @@
     </style>
 </head>
 <body>
-<form id="add-user-post" th:action="@{/pet/{id}/delete(id=${pet.id_pet})}" th:method="post" action="delete-pet-page.html">
+<form id="add-user-post" th:action="@{/pet/delete}" th:method="post" action="delete-pet-page.html">
     <h1>Delete pet</h1>
     <div class="row">
         <label for="id-input">ID:</label>

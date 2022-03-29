@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete user</title>
-    <link rel="stylesheet" href="./style/style.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/style.css">
     <style>
         div.row{
             margin-bottom: 10px;
@@ -14,7 +14,7 @@
 
     <h1>Delete user</h1>
 
-    <form id="edit-user-post" th:action="@{/user/{id}/delete(id=${userDto.id_user})}" th:method="post" action="delete-user-page.html">
+    <form id="edit-user-post" th:action="@{/user/delete}" th:method="post" action="delete-user-page.html">
 
         <div class="row">
             <label for="id-input">ID:</label>

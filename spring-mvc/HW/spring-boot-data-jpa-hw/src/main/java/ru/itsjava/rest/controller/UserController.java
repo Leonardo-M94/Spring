@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 @Controller
 @RequiredArgsConstructor
 public class UserController {
-
     private final UserService userService;
     private final PetService petService;
     private final EmailService emailService;
@@ -29,7 +28,7 @@ public class UserController {
 
         List<UserDto> userDtoList = userService.findAll()
                 .stream()
-                .map(user -> UserDto.toDto(user))
+                .map(UserDto::toDto)
                 .collect(Collectors.toList());
 
         model.addAttribute("users", userDtoList);
@@ -42,7 +41,7 @@ public class UserController {
 
         List<PetDto> petDtoList = petService.findAll()
                 .stream()
-                .map(pet -> PetDto.toDto(pet))
+                .map(PetDto::toDto)
                 .collect(Collectors.toList());
 
         model.addAttribute("pets", petDtoList);
@@ -75,13 +74,16 @@ public class UserController {
 
         model.addAttribute("userDto", userDto);
 
-        List<PetDto> petDtoList = petService.findAll().stream().map(PetDto::toDto).collect(Collectors.toList());
+        List<PetDto> petDtoList = petService.findAll()
+                .stream()
+                .map(PetDto::toDto)
+                .collect(Collectors.toList());
 
         model.addAttribute("pets", petDtoList);
         return "edit-user-page";
     }
 
-    @PostMapping("/user/{id}/edit")
+    @PostMapping("/user/edit")
     public String afterEditPage(EmailDto emailDto, PetDto petDto, UserDto userDto) {
 
         long idPet = petService.findByName(petDto.getBreed()).get().getId();
@@ -103,7 +105,7 @@ public class UserController {
         return "delete-user-page";
     }
 
-    @PostMapping("/user/{id}/delete")
+    @PostMapping("/user/delete")
     public String afterDeletePage(UserDto userDto) {
 
         userService.deleteById(Long.parseLong(userDto.getId_user()));
@@ -113,7 +115,4 @@ public class UserController {
 
         return "redirect:/user";
     }
-
-
-
 }

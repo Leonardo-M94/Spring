@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit user</title>
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <style>
         div.row{
             margin-bottom: 10px;
@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <form id="edit-user-post" th:action="@{/user/{id}/edit(id=${userDto.id_user})}" th:method="post" action="edit-user-page.html">
+    <form id="edit-user-post" th:action="@{/user/edit}" th:method="post" action="edit-user-page.html">
 
         <h1>Edit user:</h1>
 

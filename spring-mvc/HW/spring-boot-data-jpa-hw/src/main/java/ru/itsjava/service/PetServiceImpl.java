@@ -14,7 +14,6 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class PetServiceImpl implements PetService {
-
     private final PetRepository petRepository;
     private final UserRepository userRepository;
 

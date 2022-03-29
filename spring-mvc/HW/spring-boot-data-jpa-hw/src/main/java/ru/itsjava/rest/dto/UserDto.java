@@ -9,7 +9,6 @@ import java.sql.Date;
 @AllArgsConstructor
 @Data
 public class UserDto {
-
     private String id_user;
     private String fio;
     private String birthday;
@@ -18,7 +17,6 @@ public class UserDto {
     private PetDto petDto;
 
     public static User fromDto(UserDto userDto) {
-
         if (userDto.id_user == null) {
             userDto.id_user = "0";
         }
@@ -33,7 +31,6 @@ public class UserDto {
     }
 
     public static UserDto toDto(User user) {
-
         return new UserDto(
                 String.valueOf(user.getId()),
                 user.getFio(),

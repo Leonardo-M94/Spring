@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.itsjava.rest.dto.PetDto;
 import ru.itsjava.service.PetService;
-import ru.itsjava.service.UserService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +15,6 @@ import java.util.stream.Collectors;
 @Controller
 @RequiredArgsConstructor
 public class PetController {
-
     private final PetService petService;
 
     @GetMapping("/pet")
@@ -24,7 +22,7 @@ public class PetController {
 
         List<PetDto> petDtoList = petService.findAll()
                 .stream()
-                .map(pet -> PetDto.toDto(pet))
+                .map(PetDto::toDto)
                 .collect(Collectors.toList());
 
         model.addAttribute("pets", petDtoList);
@@ -50,7 +48,7 @@ public class PetController {
         return "edit-pet-page";
     }
 
-    @PostMapping("/pet/{id}/edit")
+    @PostMapping("/pet/edit")
     public String afterEditPage(PetDto petDto) {
 
         petService.update(PetDto.fromDto(petDto));
@@ -64,7 +62,7 @@ public class PetController {
         return "delete-pet-page";
     }
 
-    @PostMapping("/pet/{id}/delete")
+    @PostMapping("/pet/delete")
     public String afterDeletePage(PetDto petDto) {
 
         petService.delete(PetDto.fromDto(petDto));
