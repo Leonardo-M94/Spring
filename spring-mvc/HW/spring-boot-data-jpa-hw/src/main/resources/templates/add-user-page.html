@@ -3,12 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Add user</title>
-    <link rel="stylesheet" href="../static/css/style.css">
-    <style>
-        div.row{
-            margin-bottom: 10px;
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
@@ -17,15 +12,15 @@
 
     <div class="row">
         <label for="email-input">Email:</label>
-        <input id="email-input" name="email" type="text" value="" width="200"/>
+        <input id="email-input" name="email" type="text" value=""/>
     </div>
     <div class="row">
         <label for="password-input">Password:</label>
-        <input id="password-input" name="password" type="text" value="" width="200"/>
+        <input id="password-input" name="password" type="text" value=""/>
     </div>
     <div class="row">
         <label for="fio-input">FIO:</label>
-        <input id="fio-input" name="fio" type="text" value="" width="200"/>
+        <input id="fio-input" name="fio" type="text" value=""/>
     </div>
     <div class="row">
         <label for="birthday-input">Birthday:</label>

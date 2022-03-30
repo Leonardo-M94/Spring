@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Add pet</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
 
@@ -11,7 +11,7 @@
         <h3>Input pet breed:</h3>
         <div class="row">
             <label for="breeed-input">Breed:</label>
-            <input id="breeed-input" name="breed" type="text" value="" width="200"/>
+            <input id="breeed-input" name="breed" type="text" value=""/>
         </div>
         <div class="row">
             <button type="submit" name="OK">Add</button>

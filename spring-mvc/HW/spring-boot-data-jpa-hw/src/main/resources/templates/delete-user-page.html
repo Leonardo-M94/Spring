@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete user</title>
-    <link type="text/css" rel="stylesheet" href="../static/css/style.css">
-    <style>
-        div.row{
-            margin-bottom: 10px;
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}">
+<!--    <style>-->
+<!--        div.row{-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+<!--    </style>-->
 </head>
 <body>
 
@@ -18,21 +18,21 @@
 
         <div class="row">
             <label for="id-input">ID:</label>
-            <input id="id-input" readonly="readonly" name="id_user" type="text" th:value="${userDto.id_user}" width="200"/>
+            <input id="id-input" readonly="readonly" name="id_user" type="text" th:value="${userDto.id_user}"/>
         </div>
 
         <div class="row">
             <label for="email-input">Email:</label>
-            <input id="email-input" readonly="readonly" name="email" type="text" th:value="${userDto.emailDto.email}" width="200"/>
+            <input id="email-input" readonly="readonly" name="email" type="text" th:value="${userDto.emailDto.email}"/>
             <input type="hidden" name="id_email" th:value="${userDto.emailDto.id_email}" />
         </div>
         <div class="row">
             <label for="password-input">Password:</label>
-            <input id="password-input" readonly="readonly" name="password" type="text" th:value="${userDto.emailDto.password}" width="200"/>
+            <input id="password-input" readonly="readonly" name="password" type="text" th:value="${userDto.emailDto.password}"/>
         </div>
         <div class="row">
             <label for="fio-input">FIO:</label>
-            <input id="fio-input" readonly="readonly" name="fio" type="text" th:value="${userDto.fio}" width="200"/>
+            <input id="fio-input" readonly="readonly" name="fio" type="text" th:value="${userDto.fio}"/>
         </div>
         <div class="row">
             <label for="birthday-input">Birthday:</label>

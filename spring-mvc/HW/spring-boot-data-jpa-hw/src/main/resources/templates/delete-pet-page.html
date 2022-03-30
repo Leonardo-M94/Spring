@@ -3,25 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete pet</title>
-    <link rel="stylesheet" href="../static/css/style.css">
-    <style>
-        div.row{
-            margin-bottom: 10px;
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <form id="add-user-post" th:action="@{/pet/delete}" th:method="post" action="delete-pet-page.html">
     <h1>Delete pet</h1>
     <div class="row">
         <label for="id-input">ID:</label>
-        <input id="id-input" readonly="readonly" name="id_pet" type="text" th:value="${pet.id_pet}" width="200"/>
+        <input id="id-input" readonly="readonly" name="id_pet" type="text" th:value="${pet.id_pet}"/>
     </div>
     <div class="row">
         <label for="breed-input">Breed:</label>
-        <input id="breed-input" readonly="readonly" name="breed" type="text" th:value="${pet.breed}" width="200"/>
+        <input id="breed-input" readonly="readonly" name="breed" type="text" th:value="${pet.breed}"/>
     </div>
-    <div class="row" style="margin-top: 10px">
+    <div class="row">
         <button type="submit" name="OK">Delete</button>
     </div>
 </form>
